@@ -5,6 +5,7 @@
 		<meta charset="utf-8"/>
 		<meta name="description" content=""/>
 		<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 		<title></title>
   	<style>  
   	a {color:#eaaa00}
@@ -272,7 +273,7 @@ function ChangeValuesS()
 		padding-left:38px;
 		-moz-border-radius:0px;
 		-webkit-border-radius:0px;
-		border-radius:1px;
+		border-radius:100px !important;
 	}
 	form.form p.submit {
 		margin-top:10px;
@@ -289,6 +290,7 @@ function ChangeValuesS()
 	}
 	.title{
 		font-size: 30px;
+		font-family: "Open Sans";;
 		font-weight: bold;
 		text-align: center;
 		margin-bottom: -5px;
@@ -312,26 +314,35 @@ function ChangeValuesS()
 	}
 	.description{
 		margin-left: -10px !important;
+		font-family: "Open Sans";
 	}
 	.autorizacion_datos{
 		margin-left: 40% !important;
 	}
-	.input_confirmacion{
-		margin-left: -50% !important;
-	}
-	.submit{
-		margin-right: -4% !important;
-	}
+	
 	.solicitar_informacion{
-		color: black !important;
+		margin-left: 4% !important;
+		font-family: "Open Sans";
 	}
+	.select{
+		border-radius: 0% !important;
+		font-family: "Open Sans";
+	}
+	form.form input{
+		border-radius: 0% !important;
+		font-family: "Open Sans";
+	}
+	.inline{
+		margin-right: 51% !important;
+	}
+	
 	</style>
 	<div class="formContainer">
 	<p class="title"><span class="spanTitle">Más</span> información</p>
 	<form accept-charset="UTF-8" action="http://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
 	
 	<style type="text/css">
-		form.form p label { color: #6e6b6b; font-size: 14pt; font-family: Tahoma, 'Trebuchet MS', Verdana, Helvetica, Arial, sans-serif; }
+		form.form p label { color: #6e6b6b; font-size: 14pt; font-family: "Open Sans";}
 	</style>
 
 	<div class="col">
@@ -489,7 +500,7 @@ function ChangeValuesS()
 				<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
 			</span>
 				
-			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span>Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
+			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
 			<br>
 	<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none">Ver política de privacidad</a></span>
 				
@@ -519,7 +530,7 @@ function ChangeValuesS()
 		<input name="_utf8" type="hidden" value="&#9731;" />
 		<input type="hidden" id="gclid_field" name="gclid_field"> 
 		<p class="submit">
-			<input type="submit" accesskey="s" value="Solicitar Información" class="solicitar_informacion"/>
+			<input type="submit" accesskey="s" value="SOLICITAR INFORMACIÓN" class="solicitar_informacion"/>
 		</p>
 	
 	
