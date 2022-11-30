@@ -265,7 +265,7 @@ function ChangeValuesS()
 		background-color:#eaaa00;
 		border:solid 1px #eaaa00;
 		font-size:14px;
-		color:#FFFFFF;
+		color:#000000;
 		font-weight:bold;
 		padding-top:15px;
 		padding-bottom:15px;
@@ -274,6 +274,7 @@ function ChangeValuesS()
 		-moz-border-radius:0px;
 		-webkit-border-radius:0px;
 		border-radius:100px !important;
+		width: 230px !important;
 	}
 	form.form p.submit {
 		margin-top:10px;
@@ -301,13 +302,13 @@ function ChangeValuesS()
 		text-align: center;
 	}
 	.select_Escoge_Programa{
-		width: 213px;
+		width: 400px;
 	}
 	.select_Sede{
-		width: 213px;
+		width: 400px;
 	}
 	.select_Tipo_Programa{
-		width: 213px;
+		width: 400px;
 	}
 	.Sede{
 		padding-left: 15px;
@@ -315,25 +316,40 @@ function ChangeValuesS()
 	.description{
 		margin-left: -10px !important;
 		font-family: "Open Sans";
+		font-size: 10px;
 	}
 	.autorizacion_datos{
 		margin-left: 40% !important;
+		font-size: 10px;
 	}
-	
 	.solicitar_informacion{
 		margin-left: 4% !important;
 		font-family: "Open Sans";
 	}
+	.solicitar_informacion:hover{
+		background-color: #910048 !important;
+		color: white !important;
+		cursor: pointer;
+	}
 	.select{
 		border-radius: 0% !important;
 		font-family: "Open Sans";
+		border: solid 1px #d1cece !important;
 	}
 	form.form input{
 		border-radius: 0% !important;
 		font-family: "Open Sans";
+		width: 390px !important;
+		border: solid 1px #d1cece !important;
+	}
+	.input_confirmacion{
+		margin-left: -66% !important;
 	}
 	.inline{
-		margin-right: 51% !important;
+		margin-left: -185px !important;
+	}
+	.col{
+		margin-top: -5px;
 	}
 	
 	</style>
@@ -342,7 +358,7 @@ function ChangeValuesS()
 	<form accept-charset="UTF-8" action="http://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
 	
 	<style type="text/css">
-		form.form p label { color: #6e6b6b; font-size: 14pt; font-family: "Open Sans";}
+		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans";}
 	</style>
 
 	<div class="col">
@@ -490,17 +506,17 @@ function ChangeValuesS()
 		</p>
 		<div id="error_for_phone_hf" style="display:none"></div>	
 	</div>		
-		<!--Autorización:<input  id="00N1K00000foahL" name="00N1K00000foahL" type="checkbox" value="1" /><br>-->
+		<!--Autorización:<input  id="00N1K00000foahL" name="00N1K00000foahL" type="checkbox" value="1" /><br>-->	
 	<div class="col">
 		<p class="form-field  Autorizaci_n_de_datos pd-checkbox required required-custom">
+			
+			<label class="field-label autorizacion_datos" for="aut_data2">Autorización de datos</label>
 				
-			<label class="field-label autorizacion_datos" for="aut_data2">Autorización de datos *</label>
-					
 			<span class="value">
 				<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
 			</span>
 				
-			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
+			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 10px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
 			<br>
 	<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none">Ver política de privacidad</a></span>
 				
@@ -530,7 +546,7 @@ function ChangeValuesS()
 		<input name="_utf8" type="hidden" value="&#9731;" />
 		<input type="hidden" id="gclid_field" name="gclid_field"> 
 		<p class="submit">
-			<input type="submit" accesskey="s" value="SOLICITAR INFORMACIÓN" class="solicitar_informacion"/>
+			<input type="submit" accesskey="s" value="Solicitar información" class="solicitar_informacion"/>
 		</p>
 	
 	
