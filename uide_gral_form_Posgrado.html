@@ -5,7 +5,7 @@
 		<meta charset="utf-8"/>
 		<meta name="description" content=""/>
 		<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
-		<meta name="viewport" content="width=de	vice-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 		<title></title>
   	<style>  
@@ -91,34 +91,12 @@
 		}, 1000)
 	</script>
 
-
 	<script type="text/javascript">
-		function ShowValuesSede(){
-			var sed1 = document.getElementById("sede").value;
-			var tipoprogram1 = document.getElementById("tp_pgm");
-			var selecprogram1 = document.getElementById("esc_pgm");
-			tipoprogram1.value = '';
-			selecprogram1.value = '';
-			if(sed1 == ""){
-				tipoprogram1.disabled = true;
-				selecprogram1.disabled = true;
-			}
-			for(i=0;i < tipoprogram1.length; i++){
-				tipoprogram1.options[0].select;
-				var st = tipoprogram1.options[i].style;
-				st.removeProperty('display');
-			}
-			for(i=0;i < selecprogram1.length; i++){
-				selecprogram1.options[0].select;
-				var st2 = selecprogram1.options[i].style;
-				st2.removeProperty('display');
-			}
-		}
 		function ShowValuesTypeProgram(){
-			var tipoprogram2 = document.getElementById("tp_pgm").value;
-			var selecprogram2 = document.getElementById("esc_pgm");
+			let sede2 = document.getElementById("sede").value;
+			let selecprogram2 = document.getElementById("esc_pgm");
 			selecprogram2.value = '';
-			if(tipoprogram2 == ""){
+			if(sede2 == ""){
 				selecprogram2.disabled = true;
 			}
 			for(i=0;i < selecprogram2.length; i++){
@@ -127,95 +105,38 @@
 				st4.removeProperty('display');
 			}
 		}
-function ChangeValuesS()
-		{
-			/* Para obtener el valor */
-			var sed = document.getElementById("sede").value;
-			var tipoprogram = document.getElementById("tp_pgm");
-			//console.log(sed);
-			//console.log(tipoprogram);
-			var selecprogram = document.getElementById("esc_pgm");
-			selecprogram.value = '';
-			selecprogram.disabled = true;
-			
-			if(sed == "1"){
-				tipoprogram.disabled = false;
-				for(i=0;i < tipoprogram.length; i++){
-				if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Quito' && tipoprogram.options[i].value !== 'Posgrado Quito'){
-					tipoprogram.options[i].style.display = 'none';
-				}}
-			} else if(sed == "3"){
-				tipoprogram.disabled = false;
-				for(i=0;i < tipoprogram.length; i++){
-					if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Guayaquil' && tipoprogram.options[i].value !== 'Posgrado Guayaquil'){
-					tipoprogram.options[i].style.display = 'none';
-				}}
-			} else if(sed == "2"){
-				tipoprogram.disabled = false;
-				for(i=0;i < tipoprogram.length; i++){
-					if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Loja' && tipoprogram.options[i].value !== 'Posgrado Loja'){
-					tipoprogram.options[i].style.display = 'none';
-				}}
-			}
-			else if(sed == "4"){
-				tipoprogram.disabled = false;
-				for(i=0;i < tipoprogram.length; i++){
-					if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Distancia' && tipoprogram.options[i].value !== 'Posgrado En Línea'){
-						tipoprogram.options[i].style.display = 'none';
-				}}
-			}
-		}
 		function ChangeValueTp(){
-			var tipoprogram3 = document.getElementById("tp_pgm").value;
-			var selecprogram = document.getElementById("esc_pgm");
-			if(tipoprogram3 == "Pregrado Quito"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if(selecprogram.options[i].value !== '' && i > '22'){
-						selecprogram.options[i].style.display = 'none';
-				}}
-			}else if(tipoprogram3 == "Posgrado Quito"){
+			let sede3 = document.getElementById("sede").value;
+			let selecprogram = document.getElementById("esc_pgm");
+			var tipo_program = document.getElementById("tp_pgm");
+			if(sede3 == "1"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
 					if((selecprogram.options[i].value !== '') && (i < '23' || i > '37')){
 						selecprogram.options[i].style.display = 'none';
 				}}
-			}else if(tipoprogram3 == "Pregrado Guayaquil"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '38' || i > '44')){
-						selecprogram.options[i].style.display = 'none';
-				}}
-			}else if(tipoprogram3 == "Posgrado Guayaquil"){
+				tipo_program.value = "Posgrado Quito";
+			}else if(sede3 == "3"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
 					if((selecprogram.options[i].value !== '') && (i < '45' || i > '48')){
 						selecprogram.options[i].style.display = 'none';
 				}}
-			}else if(tipoprogram3 == "Pregrado Loja"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '49' || i > '55')){
-						selecprogram.options[i].style.display = 'none';
-				}}
-			}else if(tipoprogram3 == "Posgrado Loja"){
+				tipo_program.value = "Posgrado Guayaquil";
+			}else if(sede3 == "2"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
 					if((selecprogram.options[i].value !== '') && (i < '56' || i > '57')){
 						selecprogram.options[i].style.display = 'none';
 				}}
-			}else if(tipoprogram3 == "Pregrado Distancia"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '58' || i > '67')){
-						selecprogram.options[i].style.display = 'none';
-				}}
-			}else if(tipoprogram3 == "Posgrado En Línea"){
+				tipo_program.value = "Posgrado Loja";
+			}else if(sede3 == "4"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
 					if((selecprogram.options[i].value !== '') && (i < '68' || i > '77')){
 						selecprogram.options[i].style.display = 'none';
 				}}
+				tipo_program.value = "Posgrado En Línea";
 			}
 		}
 	</script>
@@ -241,7 +162,7 @@ function ChangeValuesS()
 <body>
 	<style type="text/css"> 
 	p.pd-text label, p.pd-select label, p.pd-textarea label {display:none !important;}
-		
+	
 	form.form input.text, form.form textarea.standard, form.form select, form.form input.date { 
 		background-color:#FFFFFF;
 		border:solid 1px #7D7D7D;
@@ -266,7 +187,7 @@ function ChangeValuesS()
 		background-color:#eaaa00;
 		border:solid 1px #eaaa00;
 		font-size:14px;
-		color:#000000;
+		color:#FFFFFF;
 		font-weight:bold;
 		padding-top:15px;
 		padding-bottom:15px;
@@ -286,13 +207,13 @@ function ChangeValuesS()
 	form.form p.required label, form.form span.required label {
 		font-weight:normal;
 	} 
-	/********************/
+	/*****************/
 	.spanTitle{
 		color: #910048;
 	}
 	.title{
 		font-size: 22px;
-		font-family: "Open Sans";;
+		font-family: "Open Sans";
 		font-weight: bold;
 		text-align: center;
 		margin-bottom: -5px;
@@ -480,16 +401,17 @@ function ChangeValuesS()
 	</style>
 	<div class="formContainer">
 	<p class="title"><span class="spanTitle">Más</span> información</p>
-	<form accept-charset="UTF-8" action="http://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
 	
+	<form accept-charset="UTF-8" action="http://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
+
 	<style type="text/css">
-		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans";}
+		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans"; }
 	</style>
 
 	<div class="col">
 	<p class="form-field  Sede pd-select required required-custom form-field-primary">
 		<label class="field-label" for="sede">Sede:</label>
-			<select  id="sede" name="sede" class="select select_Sede" onchange="ShowValuesSede();ChangeValuesS();"><option value="" selected="selected">Sede *</option>
+			<select  id="sede" name="sede" class="select select_Sede" onchange="ShowValuesTypeProgram();ChangeValueTp();"><option value="" selected="selected">Sede *</option>
 				<option value="1">Quito</option>
 				<option value="3">Guayaquil</option>
 				<option value="2">Loja</option>
@@ -497,25 +419,15 @@ function ChangeValuesS()
 			</select><br>
 	</p>
 	</div>
-	<div class="col">
-	<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
-		<label class="field-label" for="tp_pgm">Tipo de Programa:</label>
-			<select  id="tp_pgm" name="tp_pgm" class="select select_Tipo_Programa" onchange="ShowValuesTypeProgram();ChangeValueTp();" disabled><option value="" selected="selected">Tipo de programa *</option>
-				<option value="Pregrado Quito">Pregrado Quito</option>
-				<option value="Posgrado Quito">Posgrado Quito</option>
-				<option value="Pregrado Guayaquil">Pregrado Guayaquil</option>
-				<option value="Posgrado Guayaquil">Posgrado Guayaquil</option>
-				<option value="Pregrado Loja">Pregrado Loja</option>
-				<option value="Posgrado Loja">Posgrado Loja</option>
-				<option value="Pregrado Distancia">Pregrado Distancia</option>
-				<option value="Posgrado En Línea">Posgrado En Línea</option>
-			</select><br>
-	</p>
+	<div class="col hidden">
+		<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
+				<input type="hidden" id="tp_pgm" name="tp_pgm"> 					
+		</p>
 	</div>
 	<div class="col">
 		<p class="form-field  Escoge_tu_programa pd-select required required-custom form-field-primary">
 		<label class="field-label" for="esc_pgm">Escoge tu programa:</label>
-			<select  id="esc_pgm" name="esc_pgm" class="select select_Escoge_Programa" onchange="" disabled><option value="" selected="selected">Escoge tu programa *</option>
+			<select  id="esc_pgm" name="esc_pgm" class="select select_Escoge_Programa" onchange=" " disabled><option value="" selected="selected">Escoge tu programa *</option>
 				<option value="284">Agronegocios-Q</option>
 				<option value="296">Economía-Q</option>
 				<option value="2">Marketing-Q</option>
@@ -631,16 +543,16 @@ function ChangeValuesS()
 		</p>
 		<div id="error_for_phone_hf" style="display:none"></div>	
 	</div>		
-		<!--Autorización:<input  id="00N1K00000foahL" name="00N1K00000foahL" type="checkbox" value="1" /><br>-->	
+		<!--Autorización:<input  id="00N1K00000foahL" name="00N1K00000foahL" type="checkbox" value="1" /><br>-->
 	<div class="col">
 		<p class="form-field  Autorizaci_n_de_datos pd-checkbox required required-custom">
-			
-			<label class="field-label autorizacion_datos" for="aut_data2">Autorización de datos</label>
 				
+			<label class="field-label autorizacion_datos" for="aut_data2">Autorización de datos *</label>
+					
 			<span class="value">
 				<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
 			</span>
-			
+				
 			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 9px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
 	<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none; font-size: 11px;">Ver política de privacidad</a></span>
 				
@@ -670,7 +582,7 @@ function ChangeValuesS()
 		<input name="_utf8" type="hidden" value="&#9731;" />
 		<input type="hidden" id="gclid_field" name="gclid_field"> 
 		<p class="submit">
-			<input type="submit" accesskey="s" value="Solicitar información" class="solicitar_informacion"/>
+			<input type="submit" accesskey="s" value="Solicitar Información" class="solicitar_informacion"/>
 		</p>
 	
 	
