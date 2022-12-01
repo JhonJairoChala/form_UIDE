@@ -241,7 +241,7 @@ function ChangeValuesS()
 <body>
 	<style type="text/css"> 
 	p.pd-text label, p.pd-select label, p.pd-textarea label {display:none !important;}
-	
+		
 	form.form input.text, form.form textarea.standard, form.form select, form.form input.date { 
 		background-color:#FFFFFF;
 		border:solid 1px #7D7D7D;
@@ -356,12 +356,32 @@ function ChangeValuesS()
 	form.form p{
 		line-height: 1em !important;
 	}
-	@media (max-width: 400px){
+	@media (max-width: 425px){
 		.input_confirmacion{
 			margin-left: -120% !important ;
 		}
 		.autorizacion_datos{
 			margin-left: 20% !important;
+		}
+		.form.form input{
+			width: 320px !important;
+		}
+		.select{
+			width: 333px !important;
+		}
+		.formContainer{
+			height: 500px !important;
+		}
+		.inline{
+			margin-left: -153px !important;
+		}
+	}
+	@media (min-width: 426px) and (max-width: 520px){
+		.input_confirmacion{
+			margin-left: -100% !important ;
+		}
+		.autorizacion_datos{
+			margin-left: 25% !important;
 		}
 		.form.form input{
 			width: 320px !important;
