@@ -7,6 +7,7 @@
 		<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=de	vice-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+		<link rel="stylesheet" type="text/css" href="https://go.uide.edu.ec/css/form.css?ver=2021-09-20" />
 		<title></title>
   	<style>  
   	a {color:#eaaa00}
@@ -17,7 +18,7 @@
 			var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
 			return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 		}
-
+		
 		function getExpiryRecord(value) {
 			var expiryPeriod = 90 * 24 * 60 * 60 * 1000;
 
@@ -220,9 +221,7 @@ function ChangeValuesS()
 		}
 	</script>
 			
-
-		<link rel="stylesheet" type="text/css" href="https://go.uide.edu.ec/css/form.css?ver=2021-09-20" />
-		<script type="text/javascript" src="https://go.uide.edu.ec/js/piUtils.js?ver=2021-09-20"></script><script type="text/javascript">
+		<script type="text/javascript">
 		piAId = '456762';
 		piCId = '211309';
 		piHostname = 'pi.pardot.com';
@@ -241,11 +240,12 @@ function ChangeValuesS()
 <body>
 	<style type="text/css"> 
 	p.pd-text label, p.pd-select label, p.pd-textarea label {display:none !important;}
-		
+	form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans";}
+	
 	form.form input.text, form.form textarea.standard, form.form select, form.form input.date { 
 		background-color:#FFFFFF;
 		border:solid 1px #7D7D7D;
-		font-size:9px;
+		font-size:10px;
 		color:#7D7D7D;
 		-moz-border-radius:0px;
 		-webkit-border-radius:0px;
@@ -268,20 +268,20 @@ function ChangeValuesS()
 		font-size:14px;
 		color:#000000;
 		font-weight:bold;
-		padding-top:15px;
-		padding-bottom:15px;
-		padding-right:38px;
-		padding-left:38px;
+		padding-top:15px !important;
+		padding-bottom:15px !important;
+		padding-right:38px !important;
+		padding-left:38px !important;
 		-moz-border-radius:0px;
 		-webkit-border-radius:0px;
 		border-radius:100px !important;
 		width: 230px !important;
 	}
 	form.form p.submit {
-		margin-top:10px;
-		margin-bottom:0px;
-		text-align:center;
-		margin-left:-35px;
+		margin-top:10px !important;
+		margin-bottom:0px !important;
+		text-align:center !important;
+		margin-left:-35px !important;
 	}
 	form.form p.required label, form.form span.required label {
 		font-weight:normal;
@@ -318,7 +318,7 @@ function ChangeValuesS()
 	.description{
 		margin-left: -10px !important;
 		font-family: "Open Sans";
-		font-size: 9px;
+		font-size: 10px;
 		margin-top: -5px;
 	}
 	.autorizacion_datos{
@@ -479,13 +479,8 @@ function ChangeValuesS()
 	}
 	</style>
 	<div class="formContainer">
-	<a href="uide_gral_form.html">Form general</a>
 	<p class="title"><span class="spanTitle">Más</span> información</p>
 	<form accept-charset="UTF-8" action="https://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
-	
-	<style type="text/css">
-		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans";}
-	</style>
 
 	<div class="col">
 	<p class="form-field  Sede pd-select required required-custom form-field-primary">
@@ -642,8 +637,8 @@ function ChangeValuesS()
 				<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
 			</span>
 			
-			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 9px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
-	<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none; font-size: 11px;">Ver política de privacidad</a></span>
+			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 10px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
+	<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none; font-size: 12px; color: #eaaa00;">Ver política de privacidad</a></span>
 				
 		</p>
 		<div id="error_for_aut_data2" style="display:none"></div>
@@ -702,5 +697,6 @@ function ChangeValuesS()
 				window.piAjax.checkForDependentField.call(input);
 			});
 		})(); });})();</script>-->
+		<script type="text/javascript" src="https://go.uide.edu.ec/js/piUtils.js?ver=2021-09-20"></script>
 	</body>
 </html>
