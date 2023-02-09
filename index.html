@@ -336,57 +336,46 @@
 				
 				if(sed == "1"){
 					tipoprogram.disabled = false;
-					for(i=0;i < tipoprogram.length; i++){
-					if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Quito' && tipoprogram.options[i].value !== 'Posgrado Quito'){
-						document.querySelector('.Posgrado_Quito').removeAttribute('hidden')	;					
-						document.querySelector('.Pregrado_Quito').removeAttribute('hidden');						
-						document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
-						document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
-						document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
-						document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
-						document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
-						document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
-					}}
+					document.querySelector('.Posgrado_Quito').removeAttribute('hidden')	;					
+					document.querySelector('.Pregrado_Quito').removeAttribute('hidden');						
+					document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
 				} else if(sed == "3"){
 					tipoprogram.disabled = false;
-					for(i=0;i < tipoprogram.length; i++){
-						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Guayaquil' && tipoprogram.options[i].value !== 'Posgrado Guayaquil'){
-							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
-							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
-							document.querySelector('.Pregrado_Guayaquil').removeAttribute('hidden');						
-							document.querySelector('.Posgrado_Guayaquil').removeAttribute('hidden');					
-							document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
-							document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
-					}}
+					document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
+					document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+					document.querySelector('.Pregrado_Guayaquil').removeAttribute('hidden');						
+					document.querySelector('.Posgrado_Guayaquil').removeAttribute('hidden');					
+					document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);		
 				} else if(sed == "2"){
 					tipoprogram.disabled = false;
-					for(i=0;i < tipoprogram.length; i++){
-						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Loja' && tipoprogram.options[i].value !== 'Posgrado Loja'){
-							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
-							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
-							document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
-							document.querySelector('.Pregrado_Loja').removeAttribute('hidden');						
-							document.querySelector('.Posgrado_Loja').removeAttribute('hidden');					
-							document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
-					}}
+					document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
+					document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+					document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Loja').removeAttribute('hidden');						
+					document.querySelector('.Posgrado_Loja').removeAttribute('hidden');					
+					document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
+
 				}
 				else if(sed == "4"){
 					tipoprogram.disabled = false;
-					for(i=0;i < tipoprogram.length; i++){
-						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Distancia' && tipoprogram.options[i].value !== 'Posgrado En Línea'){
-							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true);					
-							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
-							document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
-							document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
-							document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
-							document.querySelector('.Pregrado_Distancia').removeAttribute('hidden');						
-							document.querySelector('.Posgrado_En_Línea').removeAttribute('hidden');
-					}}
+					document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true);					
+					document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+					document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+					document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+					document.querySelector('.Pregrado_Distancia').removeAttribute('hidden');						
+					document.querySelector('.Posgrado_En_Línea').removeAttribute('hidden');
 				}
 			}
 			
