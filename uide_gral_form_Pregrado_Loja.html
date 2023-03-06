@@ -7,6 +7,7 @@
 		<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+		<link rel="stylesheet" type="text/css" href="https://go.uide.edu.ec/css/form.css?ver=2021-09-20" />
 		<title></title>
   	<style>  
   	a {color:#eaaa00}
@@ -91,12 +92,13 @@
 		}, 1000)
 	</script>
 
+
 	<script type="text/javascript">
 		function ShowValuesTypeProgram(){
-			let sede2 = document.getElementById("sede").value;
-			let selecprogram2 = document.getElementById("esc_pgm");
+			var tipoprogram2 = document.getElementById("tp_pgm").value;
+			var selecprogram2 = document.getElementById("esc_pgm");
 			selecprogram2.value = '';
-			if(sede2 == ""){
+			if(tipoprogram2 == ""){
 				selecprogram2.disabled = true;
 			}
 			for(i=0;i < selecprogram2.length; i++){
@@ -106,119 +108,27 @@
 			}
 		}
 		function ChangeValueTp(){
-			let sede3 = document.getElementById("sede").value;
-			let selecprogram = document.getElementById("esc_pgm");
-			var tipo_program = document.getElementById("tp_pgm");
-			if(sede3 == "1"){
+			var tipoprogram3 = document.getElementById("tp_pgm").value;
+			var selecprogram = document.getElementById("esc_pgm");
+			var sede = document.getElementById("sede");
+			if(tipoprogram3 == "Pregrado Loja"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '23' || i > '37')){
+					if(selecprogram.options[i].value !== '' && i > '7'){
 						selecprogram.options[i].style.display = 'none';
 				}}
-				tipo_program.value = "Posgrado Quito";
-			}else if(sede3 == "3"){
+				sede.value = "1";
+			}else if(tipoprogram3 == "Posgrado Loja"){
 				selecprogram.disabled = false;
 				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '45' || i > '48')){
+					if((selecprogram.options[i].value !== '') && (i < '8' || i > '9')){
 						selecprogram.options[i].style.display = 'none';
 				}}
-				tipo_program.value = "Posgrado Guayaquil";
-			}else if(sede3 == "2"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '56' || i > '57')){
-						selecprogram.options[i].style.display = 'none';
-				}}
-				tipo_program.value = "Posgrado Loja";
-			}else if(sede3 == "4"){
-				selecprogram.disabled = false;
-				for(i=0;i<selecprogram.length; i++){
-					if((selecprogram.options[i].value !== '') && (i < '68' || i > '77')){
-						selecprogram.options[i].style.display = 'none';
-				}}
-				tipo_program.value = "Posgrado En Línea";
-			}
-		}
-
-					
-		const capturar_programa = (event) => {
-			document.getElementById("opcion_programa").value = event.target.value;
-			console.log(document.getElementById("opcion_programa").value);
-		}	
-
-		const mostrar_programas = (event) => {
-			if(event.target.value == "1"){
-				let selecprogram0 = document.getElementById("select_agregar");
-				let select_pregrado_quito = document.getElementById("posgrado_quito");
-				let arraySPL = Array.from(select_pregrado_quito.options, (option) => option.text);
-				const arraySelectProgramaLabel = arraySPL;
-				const arraySelectProgramaValue = Array.from(select_pregrado_quito.options, (option) => option.value);
-				for(let i = selecprogram0.length; i >= 0; i--){
-					selecprogram0.remove(i);
-				}				
-				addOptions(selecprogram0 , arraySelectProgramaLabel , arraySelectProgramaValue);
-				document.getElementById("select_agregar").removeAttribute("disabled");
-				document.getElementById("div_programas").removeAttribute("hidden");
-				document.getElementById("tp_pgm").value = "Posgrado Quito";
-			}
-			else if(event.target.value == "2"){
-				let selecprogram0 = document.getElementById("select_agregar");
-				let select_pregrado_quito = document.getElementById("posgrado_loja");
-				let arraySPL = Array.from(select_pregrado_quito.options, (option) => option.text);
-				const arraySelectProgramaLabel = arraySPL;
-				const arraySelectProgramaValue = Array.from(select_pregrado_quito.options, (option) => option.value);
-				for(let i = selecprogram0.length; i >= 0; i--){
-					selecprogram0.remove(i);
-				}				
-				addOptions(selecprogram0 , arraySelectProgramaLabel , arraySelectProgramaValue);
-				document.getElementById("select_agregar").removeAttribute("disabled");
-				document.getElementById("div_programas").removeAttribute("hidden");
-				document.getElementById("tp_pgm").value = "Posgrado Loja";							
-			}
-			else if(event.target.value == "3"){					
-				let selecprogram0 = document.getElementById("select_agregar");
-				let select_pregrado_quito = document.getElementById("posgrado_guayaquil");
-				let arraySPL = Array.from(select_pregrado_quito.options, (option) => option.text);
-				const arraySelectProgramaLabel = arraySPL;
-				const arraySelectProgramaValue = Array.from(select_pregrado_quito.options, (option) => option.value);
-				for(let i = selecprogram0.length; i >= 0; i--){
-					selecprogram0.remove(i);
-				}				
-				addOptions(selecprogram0 , arraySelectProgramaLabel , arraySelectProgramaValue);
-				document.getElementById("select_agregar").removeAttribute("disabled");
-				document.getElementById("div_programas").removeAttribute("hidden");
-				document.getElementById("tp_pgm").value = "Posgrado Guayaquil";				
-			}
-			else if(event.target.value == "4"){
-				let selecprogram0 = document.getElementById("select_agregar");
-				let select_pregrado_quito = document.getElementById("posgrado_online");
-				let arraySPL = Array.from(select_pregrado_quito.options, (option) => option.text);
-				const arraySelectProgramaLabel = arraySPL;
-				const arraySelectProgramaValue = Array.from(select_pregrado_quito.options, (option) => option.value);
-				for(let i = selecprogram0.length; i >= 0; i--){
-					selecprogram0.remove(i);
-				}				
-				addOptions(selecprogram0 , arraySelectProgramaLabel , arraySelectProgramaValue);
-				document.getElementById("select_agregar").removeAttribute("disabled");
-				document.getElementById("div_programas").removeAttribute("hidden");
-				document.getElementById("tp_pgm").value = "Posgrado En Línea";				
-			}
-		}
-
-		function addOptions(select, array, arrayValue) {
-			for (label in array) {
-			var option = document.createElement("option");
-			option.text = array[label];
-			select.add(option);
-			}
-			for (value2 in arrayValue) {
-			select.options[value2].setAttribute("value",arrayValue[value2]);
+				sede.value = "1";
 			}
 		}
 	</script>
 			
-
-		<link rel="stylesheet" type="text/css" href="https://go.uide.edu.ec/css/form.css?ver=2021-09-20" />
 		<script type="text/javascript" src="https://go.uide.edu.ec/js/piUtils.js?ver=2021-09-20"></script><script type="text/javascript">
 		piAId = '456762';
 		piCId = '211309';
@@ -583,34 +493,42 @@
 		</style>
 	
 	<div class="formContainer">
-	
 	<form accept-charset="UTF-8" action="https://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
 
 	<style type="text/css">
-		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans"; }
+		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: 'Open Sans'; }
 	</style>
 
-	<div class="col">
+	<div class="col hidden">
 	<p class="form-field  Sede pd-select required required-custom form-field-primary">
-		<label class="field-label" for="sede">Sede:</label>
-			<select  id="sede" name="sede" class="select select_Sede" onchange="mostrar_programas(event); "><option value="" selected="selected">Sede *</option>
-				<option value="1">Quito</option>
-				<option value="3">Guayaquil</option>
-				<option value="2">Loja</option>
-				<option value="4">Distancia</option>
+		<label class="field-label" for="sede ">Sede:</label>
+				<input type="hidden" id="sede" name="sede" value="2"> 
+	</p>
+	</div>
+	<div class="col" hidden>
+	<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
+		<label class="field-label" for="tp_pgm">Tipo de Programa:</label>
+			<select  id="tp_pgm" name="tp_pgm" class="select select_Tipo_Programa" onchange="ShowValuesTypeProgram();ChangeValueTp();">
+				<option value="Pregrado Loja">Pregrado Loja</option>
 			</select><br>
 	</p>
 	</div>
-	<div class="col hidden">
-		<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
-				<input type="hidden" id="tp_pgm" name="tp_pgm" value="Posgrado"> 					
+	<div class="col">
+		<p class="form-field  Escoge_tu_programa pd-select required required-custom form-field-primary">
+		<label class="field-label" for="esc_pgm">Escoge tu programa:</label>
+			<select  id="esc_pgm" name="esc_pgm" class="select select_Escoge_Programa" onchange="" ><option value="" selected="selected">Escoge tu programa *</option>
+				<option value="291">Agronegocios-L</option>
+				<option value="87">Negocios Internacionales -L</option>
+				<option value="86">Marketing-L</option>
+				<option value="93">Arquitectura-L</option>
+				<option value="81">Derecho-L</option>
+				<option value="276">Tecnologias de la Informacion y la Comunicacion-L</option>
+				<option value="329">Psicologia-L</option>
+				<option value="273">Maestría en Adminitración de Empresas (MBA)-L</option>
+				<option value="272">Maestría en Gestión Estratégica de cadenas de Suministro -L</option>
+			</select><br>
 		</p>
 	</div>
-	<div id="div_programas" class='col'>
-		<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
-			<select onchange='capturar_programa(event)' class="select select_Sede" id='select_agregar' disabled></select>
-		</p>
-	</div>	
 	<div class="col">
 		<p class="form-field  first_name pd-text required required-custom">
 				<label class="field-label" for="f_name">Nombres *</label>
@@ -655,7 +573,7 @@
 			<span class="value">
 				<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
 			</span>
-				
+
 			<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 10px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
 			<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none; font-size: 12px; color: #eaaa00;">Ver política de privacidad</a></span>
 	
@@ -706,52 +624,6 @@
 		//]]>
 		</script>
 		<input type="hidden" name="hiddenDependentFields" id="hiddenDependentFields" value="" />
-		<div hidden id="div_programas_2">
-			<select name="posgrado_quito" onchange="capturar_programa(event)" id="posgrado_quito" class="select select_Escoge_Programa">
-				<option value="">Escoge tu programa</option>
-				<option value="175">Maestría en Administración de Empresas (MBA)-Q</option>
-				<option value="193">Maestría en Mercadotecnia con mención en Gestión Digital-Q</option>
-				<option value="224">Maestría en Negocios Internacionales con mención en Gestión de la Internacionalización-Q</option>
-				<option value="236">Especialidad en Medicina Interna-Q</option>
-				<option value="244">Especialidad en Cirujía Traumatología y Ortopédica-Q</option>
-				<option value="237">Especialidad en Cirujía General -Q</option>
-				<option value="239">Especialidad en Pediatría -Q</option>
-				<option value="241">Especialidad en Ginecología y Obstetricia -Q</option>
-				<option value="243">Especialidad en Imagenología -Q</option>
-				<option value="267">Maestría en Gerencia en Salud-Q</option>
-				<option value="268">Maestría en Salud Pública-Q</option>
-				<option value="71">Maestría en Nutrición y Dietética con mención en Enfermedades Metabólicas, Obesidad y Diabetes-Q</option>
-				<option value="198">Especialidad en Seguridad y Salud Ocupacional con mención en Salud Ocupacional-Q</option>
-				<option value="277">Maestría en Derecho Procesal Penal y Litigación Oral-Q</option>
-				<option value="343">Maestría en Gastronomía con Mención en Gestión e Innovación-Q</option>					
-			</select>
-			<select name="posgrado_guayaquil" id="posgrado_guayaquil" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
-				<option value="">Escoge tu programa</option>
-				<option value="271">Maestría en Adminitración de Empresas (MBA)-G</option>
-				<option value="337">Maestría en Gerencia en Salud-G</option>
-				<option value="338">Maestría en Salud Pública-G</option>
-				<option value="336">Maestría en Ingeniería Automotriz mención en Procesos y Calidad del Servicio Automotriz-G</option>					
-			</select>
-			<select name="posgrado_loja" id="posgrado_loja" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
-				<option value="">Escoge tu programa</option>
-				<option value="273">Maestría en Adminitración de Empresas (MBA)-L</option>
-				<option value="272">Maestría en Gestión Estratégica de cadenas de Suministro -L</option>					
-			</select>			
-			<select name="posgrado_online" id="posgrado_online" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
-				<option value="">Escoge tu programa</option>
-				<option value="216">Maestría en Adminitración de Empresas (MBA)-O</option>
-				<option value="234">Maestría en Administración de Empresas con mención en Innovación-O</option>
-				<option value="278">Maestría en Gestión Deportiva-O</option>
-				<option value="345">Maestría en Finanzas Corporativas-O</option>
-				<option value="347">Maestría en Dirección Financiera con mención en mercados internacionales-O</option>
-				<option value="352">Maestría en Gestión Financiera y Tecnologías Disruptibas con Mención en Blockchain-O</option>
-				<option value="256">Maestría en Educación, mención en Gestión del Aprendizaje mediado por TIC-O</option>
-				<option value="344">Maestría en Derecho digital con mención en Innovación Legal y Nuevas Tecnologías-O</option>
-				<option value="353">Maestría en Relaciones Internacionales con Mención en Cooperación Internacional para el Desarrollo-O</option>
-				<option value="346">Maestría en Gamificación y Narrativa Transmedia-O</option>
-			</select>
-		</div>
-		<select id="esc_pgm" name="esc_pgm" class="select select_Escoge_Programa" hidden><option value="" id="opcion_programa"></option></select>
 	</form>
 	</div>
 		<!--<script type="text/javascript">(function(){ pardot.$(document).ready(function(){ (function() {
