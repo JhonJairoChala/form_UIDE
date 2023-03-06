@@ -1,0 +1,1003 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<base href="" >
+			<meta charset="utf-8"/>
+			<meta name="description" content=""/>
+			<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+			<meta name="viewport" content="width=de	vice-width, initial-scale=1" />
+			<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+			<link rel="stylesheet" type="text/css" href="https://go.uide.edu.ec/css/form.css?ver=2021-09-20" />
+			<title></title>
+		<style>  
+		a {color:#eaaa00}
+		a:hover {color: #eaaa00} 
+		</style>  
+		<script>
+			function getParam(p) {
+				var match = RegExp('[?&]' + p + '=([^&]*)').exec(window.location.search);
+				return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+			}
+			
+			function getExpiryRecord(value) {
+				var expiryPeriod = 90 * 24 * 60 * 60 * 1000;
+
+				var expiryDate = new Date().getTime() + expiryPeriod;
+				return {
+					value: value,
+					expiryDate: expiryDate
+				};
+			}
+
+			function addGclid() {
+				var gclidParam = getParam('gclid');
+				var gclidFormFields = ['gclid_field', '455762_454671pi_455762_454671'];
+				var gclidRecord = null;
+				var currGclidFormField;
+
+				var gclsrcParam = getParam('gclsrc');
+				var isGclsrcValid = !gclsrcParam || gclsrcParam.indexOf('aw') !== -1;
+
+				gclidFormFields.forEach(function (field) {
+					if (document.getElementById(field)) {
+						currGclidFormField = document.getElementById(field);
+					}
+
+				});
+
+				if (gclidParam && isGclsrcValid) {
+					gclidRecord = getExpiryRecord(gclidParam);
+					localStorage.setItem('gclid', JSON.stringify(gclidRecord));
+				}
+
+				var gclid = gclidRecord || JSON.parse(localStorage.getItem('gclid'));
+				var isGclidValid = gclid && new Date().getTime() < gclid.expiryDate;
+
+				if (currGclidFormField && isGclidValid) {
+					currGclidFormField.value = gclid.value;
+				}
+
+				if (isGclidValid && document.querySelector('.GCLID input')) {
+					document.querySelector('.GCLID input').value = gclid.value;
+
+				}
+
+				var addGclidToIframe = (function () {
+					var iframes = document.getElementsByTagName("iframe");
+					Object.keys(iframes).forEach(function (key) {
+						if (isGclidValid) {
+							iframes[key].src = iframes[key].src + ((iframes[key].src.indexOf('?') != -1) ? '&' : '?') + "gclid=" + gclid.value;
+						}
+					});
+				})();
+
+			}
+
+			var g_controller = 0;
+			var myInterval = setInterval(function () {
+				g_controller++;
+				var gclidField = document.querySelector('p[class*="GCLID"] input');
+				addGclid();
+				if (gclidField && gclidField.value) {
+					console.log("Gclid Addded");
+					clearInterval(myInterval);
+				} else if (!gclidField.value) {
+					window.parent.postMessage('addGclid', '*')
+
+				} else if (g_controller > 30) {
+					clearInterval(myInterval);
+
+				}
+
+			}, 1000)
+		</script>
+
+
+		<script type="text/javascript">
+			function ShowValuesSede(){
+				var sed1 = document.getElementById("sede").value;
+				var tipoprogram1 = document.getElementById("tp_pgm");
+				tipoprogram1.value = '';
+				if(sed1 == ""){
+					tipoprogram1.disabled = true;
+					document.getElementById("div_programas").setAttribute("hidden",true);	
+				}
+				for(i=0;i < tipoprogram1.length; i++){
+					tipoprogram1.options[0].select;
+					var st = tipoprogram1.options[i].style;
+					document.getElementById("div_programas").setAttribute("hidden",true);	
+					st.removeProperty('display');
+				}		
+			}
+			/*function ShowValuesTypeProgram(){
+				var tipoprogram2 = document.getElementById("tp_pgm").value;
+				//var selecprogram2 = document.getElementById("esc_pgm");
+				//selecprogram2.value = '';
+				if(tipoprogram2 == ""){
+					//selecprogram2.disabled = true;
+					document.getElementById("div_programas").setAttribute("hidden",true);	
+				}
+				for(i=0;i < selecprogram2.length; i++){
+					selecprogram2.options[0].select;
+					var st4 = selecprogram2.options[i].style;
+					st4.removeProperty('display');
+				}
+			}*/
+
+			const mostrar_programas = (event) => {
+				if(event.target.value == "Pregrado Quito"){
+					const div_programas = document.getElementById("div_programas");							
+					const div_programas2 = document.getElementById("div_programas_2");						
+					div_programas.appendChild(document.getElementById("pregrado_quito"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("pregrado_quito").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Posgrado Quito"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("posgrado_quito"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("posgrado_quito").setAttribute("required",true);
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Pregrado Loja"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("pregrado_loja"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("pregrado_loja").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Posgrado Loja"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("posgrado_loja"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("posgrado_loja").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Pregrado Guayaquil"){					
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("pregrado_guayaquil"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("pregrado_guayaquil").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Posgrado Guayaquil"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("posgrado_guayaquil"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("posgrado_guayaquil").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Pregrado Distancia"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("pregrado_online"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("pregrado_online").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("posgrado_online").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("posgrado_online"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+					}catch(error){
+						return false;
+					}
+				}
+				else if(event.target.value == "Posgrado En Línea"){
+					const div_programas = document.getElementById("div_programas");			
+					const div_programas2 = document.getElementById("div_programas_2");					
+					div_programas.appendChild(document.getElementById("posgrado_online"));
+					div_programas.removeAttribute("hidden");
+					document.getElementById("posgrado_online").setAttribute("required",true);
+					document.getElementById("posgrado_quito").removeAttribute("required");
+					document.getElementById("posgrado_loja").removeAttribute("required");
+					document.getElementById("posgrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_loja").removeAttribute("required");
+					document.getElementById("pregrado_quito").removeAttribute("required");
+					document.getElementById("pregrado_guayaquil").removeAttribute("required");
+					document.getElementById("pregrado_online").removeAttribute("required");
+					try{
+						div_programas2.appendChild(document.getElementById("pregrado_quito"));
+						div_programas2.appendChild(document.getElementById("posgrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_loja"));
+						div_programas2.appendChild(document.getElementById("posgrado_quito"));
+						div_programas2.appendChild(document.getElementById("pregrado_guayaquil"));
+						div_programas2.appendChild(document.getElementById("pregrado_online"));
+					}catch(error){
+						return false;
+					}
+				}
+			}
+	function ChangeValuesS()
+			{
+				/* Para obtener el valor */
+				var sed = document.getElementById("sede").value;
+				var tipoprogram = document.getElementById("tp_pgm");
+				//console.log(sed);
+				//console.log(tipoprogram);
+				
+				if(sed == "1"){
+					tipoprogram.disabled = false;
+					for(i=0;i < tipoprogram.length; i++){
+					if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Quito' && tipoprogram.options[i].value !== 'Posgrado Quito'){
+						document.querySelector('.Posgrado_Quito').removeAttribute('hidden')	;					
+						document.querySelector('.Pregrado_Quito').removeAttribute('hidden');						
+						document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+						document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+						document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+						document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+						document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+						document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
+					}}
+				} else if(sed == "3"){
+					tipoprogram.disabled = false;
+					for(i=0;i < tipoprogram.length; i++){
+						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Guayaquil' && tipoprogram.options[i].value !== 'Posgrado Guayaquil'){
+							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
+							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+							document.querySelector('.Pregrado_Guayaquil').removeAttribute('hidden');						
+							document.querySelector('.Posgrado_Guayaquil').removeAttribute('hidden');					
+							document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+							document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
+					}}
+				} else if(sed == "2"){
+					tipoprogram.disabled = false;
+					for(i=0;i < tipoprogram.length; i++){
+						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Loja' && tipoprogram.options[i].value !== 'Posgrado Loja'){
+							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true)	;					
+							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+							document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+							document.querySelector('.Pregrado_Loja').removeAttribute('hidden');						
+							document.querySelector('.Posgrado_Loja').removeAttribute('hidden');					
+							document.querySelector('.Pregrado_Distancia').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_En_Línea').setAttribute('hidden',true);
+					}}
+				}
+				else if(sed == "4"){
+					tipoprogram.disabled = false;
+					for(i=0;i < tipoprogram.length; i++){
+						if(tipoprogram.options[i].value !== '' && tipoprogram.options[i].value !== 'Pregrado Distancia' && tipoprogram.options[i].value !== 'Posgrado En Línea'){
+							document.querySelector('.Posgrado_Quito').setAttribute('hidden' , true);					
+							document.querySelector('.Pregrado_Quito').setAttribute('hidden' , true);						
+							document.querySelector('.Pregrado_Guayaquil').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_Guayaquil').setAttribute('hidden',true);					
+							document.querySelector('.Pregrado_Loja').setAttribute('hidden' , true);						
+							document.querySelector('.Posgrado_Loja').setAttribute('hidden',true);					
+							document.querySelector('.Pregrado_Distancia').removeAttribute('hidden');						
+							document.querySelector('.Posgrado_En_Línea').removeAttribute('hidden');
+					}}
+				}
+			}
+			
+		const capturar_programa = (event) => {
+			document.getElementById("opcion_programa").value = event.target.value;
+			console.log(document.getElementById("opcion_programa").value);
+		}	
+		</script>
+				
+			<script type="text/javascript">
+			piAId = '456762';
+			piCId = '211309';
+			piHostname = 'pi.pardot.com';
+			if(!window['pi']) { window['pi'] = {}; } pi = window['pi']; if(!pi['tracker']) { pi['tracker'] = {}; } pi.tracker.pi_form = true;
+			(function() {
+				function async_load(){
+					var s = document.createElement('script'); s.type = 'text/javascript';
+					s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+					var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+				}
+				if(window.attachEvent) { window.attachEvent('onload', async_load); }
+				else { window.addEventListener('load', async_load, false); }
+			})();
+			</script>
+		</head>
+	<body>
+		<style type="text/css"> 
+		p.pd-text label, p.pd-select label, p.pd-textarea label {display:none !important;}
+		form.form p label { color: #6e6b6b; font-size: 10pt; font-family: "Open Sans";}
+		
+		form.form input.text, form.form textarea.standard, form.form select, form.form input.date { 
+			background-color:#FFFFFF;
+			border:solid 1px #7D7D7D;
+			font-size:10px;
+			color:#7D7D7D;
+			-moz-border-radius:0px;
+			-webkit-border-radius:0px;
+			border-radius:10px;
+			padding-top:6px;
+			padding-bottom:6px;
+			padding-left:5px;
+			padding-right:5px;
+		}
+		form.form p label {
+			font-size:12px;
+			color:#333333;
+			font-weight:normal;
+			padding-top:0px;
+			padding-bottom:3px;
+		}
+		form.form p.submit input {
+			background-color:#eaaa00;
+			border:solid 1px #eaaa00;
+			font-size:14px;
+			color:#000000;
+			font-weight:bold;
+			padding-top:15px;
+			padding-bottom:15px;
+			padding-right:38px;
+			padding-left:38px;
+			-moz-border-radius:0px;
+			-webkit-border-radius:0px;
+			border-radius:100px !important;
+			width: 230px !important;
+		}
+		form.form p.submit {
+			margin-top:10px !important;
+			margin-bottom:0px !important;
+			text-align:center !important;
+			margin-left:-35px !important;
+		}
+		form.form p.required label, form.form span.required label {
+			font-weight:normal;
+		} 
+		/********************/
+		.spanTitle{
+			color: #910048;
+		}
+		.title{
+			font-size: 22px;
+			font-family: "Open Sans";;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: -5px;
+			margin-top: -5px;
+		}
+		.formContainer{
+			background-color: #eef2f8;
+			text-align: center;
+			height: 400px !important;
+		}
+		.select_Escoge_Programa{
+			width: 322px;
+		}
+		.select_Sede{
+			width: 322px;
+		}
+		.select_Tipo_Programa{
+			width: 322px;
+		}
+		.Sede{
+			padding-left: 15px;
+		}
+		.description{
+			margin-left: -10px !important;
+			font-family: "Open Sans";
+			font-size: 10px;
+			margin-top: -5px;
+		}
+		.autorizacion_datos{
+			margin-left: 40% !important;
+			font-size: 12px !important;
+		}
+		.solicitar_informacion{
+			margin-left: 4% !important;
+			font-family: "Open Sans";
+		}
+		.solicitar_informacion:hover{
+			background-color: #910048 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+		.select{
+			border-radius: 0% !important;
+			font-family: "Open Sans";
+			border: solid 1px #d1cece !important;
+		}
+		form.form input{
+			border-radius: 0% !important;
+			font-family: "Open Sans";
+			width: 310px !important;
+			border: solid 1px #d1cece !important;
+		}
+		.input_confirmacion{
+			margin-left: -67% !important;
+			height: 15px !important;
+			margin-top: -15px !important;
+		}
+		.inline{
+			margin-left: -187px !important;
+			margin-right: -30px !important;
+		}
+		.col{
+			margin-top: -5px;
+		}
+		form.form p{
+			line-height: 1em !important;
+		}
+		@media (max-width: 425px){
+			.input_confirmacion{
+				margin-left: -84% !important ;
+				margin-right: 50px !important;
+			}
+			.autorizacion_datos{
+				margin-left: 20% !important;
+			}
+			.form.form input{
+				width: 220px !important;
+			}
+			.select{
+				width: 232px !important;
+			}
+			.formContainer{
+				height: 417px !important;
+			}
+			.inline{
+				margin-left: -192px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 14% !important;
+			}
+		}
+		@media (min-width: 426px) and (max-width: 520px){
+			.input_confirmacion{
+				margin-left: -10% !important ;
+			}
+			.autorizacion_datos{
+				margin-left: 25% !important;
+			}
+			.form.form input{
+				width: 220px !important;
+			}
+			.select{
+				width: 220px !important;
+			}
+			.formContainer{
+				height: 408px !important;
+			}
+			.inline{
+				margin-left: -190px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 14% !important;
+			}
+		}
+		@media (min-width:521px) and (max-width: 640px){
+			.input_confirmacion{
+				margin-left: 3% !important ;
+			}
+			.autorizacion_datos{
+				margin-left: 30% !important;
+			}
+			.form.form input{
+				width: 272px !important;
+			}
+			.select{
+				width: 272px !important;
+			}
+			.formContainer{
+				height: 390px !important;
+			}
+			.inline{
+				margin-left: -271px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 10% !important;
+			}
+		}
+		@media (min-width:641px) and (max-width: 760px){
+			.input_confirmacion{
+				margin-left: 12% !important ;
+			}
+			.autorizacion_datos{
+				margin-left: 35% !important;
+			}
+			.form.form input{
+				width: 310px !important;
+			}
+			.select{
+				width: 310px !important;
+			}
+			.formContainer{
+				height: 380px !important;
+			}
+			.inline{
+				margin-left: -345px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 08% !important;
+			}
+		}
+		@media (min-width:761px) and (max-width: 900px){
+			.input_confirmacion{
+				margin-left: -50% !important ;
+			}
+			.autorizacion_datos{
+				margin-left: 17% !important;
+			}
+			.form.form input{
+				width: 280px !important;
+			}
+			.select{
+				width: 280px !important;
+			}
+			.formContainer{
+				height: 270px !important;
+			}
+			.inline{
+				margin-left: -250px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 7% !important;
+			}
+		}
+		@media (min-width:901px) and (max-width: 1115px){
+			.input_confirmacion{
+				margin-left: -20% !important ;
+			}
+			.autorizacion_datos{
+				margin-left: 25% !important;
+			}
+			.form.form input{
+				width: 290px !important;
+			}
+			.select{
+				width: 290px !important;
+			}
+			.formContainer{
+				height: 302px !important;
+			}
+			.inline{
+				margin-left: -260px !important;
+			}
+			form.form p.submit input {
+				background-color: #eaaa00;
+				border: solid 1px #eaaa00;
+				font-size: 14px;
+				color: #000000;
+				font-weight: bold;
+				padding-top: 18px !important;
+				padding-bottom: 18px !important;
+				padding-right: 30px !important;
+				padding-left: 30px !important;
+				-moz-border-radius: 0px;
+				-webkit-border-radius: 0px;
+				border-radius: 100px !important;
+				width: 230px !important;
+				margin-left: 6% !important;
+			}
+		}
+		</style>
+		<div class="formContainer">
+		<form accept-charset="UTF-8" action="https://go.uide.edu.ec/l/455762/2022-10-20/8blv4m" method="post" class="form" id="pardot-form">
+
+		<div class="col">
+		<p class="form-field  Sede pd-select required required-custom form-field-primary">
+			<label class="field-label" for="sede">Sede:</label>
+				<select  id="sede" name="sede" class="select select_Sede" onchange="ShowValuesSede();ChangeValuesS();"><option value="" selected="selected">Sede *</option>
+					<option value="1">Quito</option>
+					<option value="3">Guayaquil</option>
+					<option value="2">Loja</option>
+					<option value="4">Distancia</option>
+				</select><br>
+		</p>
+		</div>
+		<div class="col">
+		<p class="form-field  Tipo_de_programa pd-select required required-custom form-field-primary">
+			<label class="field-label" for="tp_pgm">Tipo de Programa:</label>
+				<select  id="tp_pgm" name="tp_pgm" class="select select_Tipo_Programa" onchange="mostrar_programas(event); " disabled><option value="" selected="selected">Tipo de programa *</option>
+					<option value="Pregrado Quito" class="Pregrado_Quito" hidden>Pregrado Quito</option>
+					<option value="Posgrado Quito" class="Posgrado_Quito" hidden>Posgrado Quito</option>
+					<option value="Pregrado Guayaquil" class="Pregrado_Guayaquil" hidden>Pregrado Guayaquil</option>
+					<option value="Posgrado Guayaquil" class="Posgrado_Guayaquil" hidden>Posgrado Guayaquil</option>
+					<option value="Pregrado Loja" class="Pregrado_Loja" hidden>Pregrado Loja</option>
+					<option value="Posgrado Loja" class="Posgrado_Loja" hidden>Posgrado Loja</option>
+					<option value="Pregrado Distancia" class="Pregrado_Distancia" hidden>Pregrado Distancia</option>
+					<option value="Posgrado En Línea" class="Posgrado_En_Línea" hidden>Posgrado En Línea</option>
+				</select><br>
+		</p>
+		</div>
+		<div hidden id="div_programas">
+
+		</div>
+		<div class="col">
+			<p id="escoge_programa_p" class="form-field  Escoge_tu_programa pd-select required required-custom form-field-primary">
+				
+			</p>
+		</div>
+		<div class="col">
+			<p class="form-field  first_name pd-text required required-custom">
+					<label class="field-label" for="f_name">Nombres *</label>
+				<input type="text" name="f_name" id="f_name" value="" class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Nombres *"/>	
+			</p>
+			<div id="error_for_f_name" style="display:none"></div>	
+		</div>
+		<div class="col">
+			<p class="form-field  last_name pd-text required required-custom">
+					<label class="field-label" for="l_name">Apellidos *</label>			
+				<input type="text" name="l_name" id="l_name" value="" class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Apellidos *"/>
+			</p>
+			<div id="error_for_l_name" style="display:none"></div>	
+		</div>
+		<div class="col">
+			<p class="form-field  email pd-text required required-custom">
+					<label class="field-label" for="email">Email *</label>			
+				<input type="text" name="email" id="email" value="" class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Email *"/>
+			</p>
+			<div id="error_for_email" style="display:none"></div>	
+		</div>
+		<div class="col">
+			<p class="form-field  mobile pd-text required required-custom">
+					<label class="field-label" for="mobile">Celular *</label>			
+				<input type="text" name="mobile" id="mobile" value="" class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Celular *"/>
+			</p>
+			<div id="error_for_mobile" style="display:none"></div>	
+		</div>		
+		<div class="col">
+			<p class="form-field  Telefono_casa pd-text required required-custom">
+					<label class="field-label" for="phone_hf">Teléfono casa *</label>			
+				<input type="text" name="phone_hf" id="phone_hf" value="" class="text" size="30" maxlength="40" onchange="" onfocus="" placeholder="Teléfono casa *"/>
+			</p>
+			<div id="error_for_phone_hf" style="display:none"></div>	
+		</div>		
+			<!--Autorización:<input  id="00N1K00000foahL" name="00N1K00000foahL" type="checkbox" value="1" /><br>-->	
+		<div class="col">
+			<p class="form-field  Autorizaci_n_de_datos pd-checkbox required required-custom">
+				
+				<label class="field-label autorizacion_datos" for="aut_data2">Autorización de datos</label>
+					
+				<span class="value">
+					<input type="checkbox" name="aut_data" id="aut_data" value=true onchange="" class="input_confirmacion"/><label class="inline" for="aut_data">Sí</label>
+				</span>
+				
+				<span class="description">*Declaro que la información proporcionada es auténtica y veraz por ello faculto a la UIDE su verificación.</span><span style="font-family: Open Sans; font-size: 10px;">Así también autorizo a la Universidad la gestión y uso de la información proporcionada para los fines <br>académicos respectivos.</span>
+		<a href="https://www.uide.edu.ec/politica-de-privacidad/" style="text-decoration:none; font-size: 12px; color: #eaaa00;">Ver política de privacidad</a></span>
+					
+			</p>
+			<div id="error_for_aut_data2" style="display:none"></div>
+				
+		</div>
+		
+		<div class="col">
+			<p class="form-field  GCLID pd-hidden  hidden">
+					
+				<input type="hidden" name="gclid_h" id="gclid_h"/>
+					
+			</p>
+			<div id="error_for_gclid_h" style="display:none"></div>
+				
+		</div>
+			
+			
+			
+		<p style="position:absolute; width:190px; left:-9999px; top: -9999px;visibility:hidden;">
+			<label for="pi_extra_field">Comments</label>
+			<input type="text" name="pi_extra_field" id="pi_extra_field"/>
+		</p>
+			
+			<!-- forces IE5-8 to correctly submit UTF8 content  -->
+			<input name="_utf8" type="hidden" value="&#9731;" />
+			<input type="hidden" id="gclid_field" name="gclid_field"> 
+			<p class="submit">
+				<input type="submit" accesskey="s" value="Solicitar información" class="solicitar_informacion"/>
+			</p>
+		
+		
+
+
+			<script type="text/javascript">
+			//<![CDATA[
+
+				var anchors = document.getElementsByTagName("a");
+				for (var i=0; i<anchors.length; i++) {
+					var anchor = anchors[i];
+					if(anchor.getAttribute("href")&&!anchor.getAttribute("target")) {
+						anchor.target = "_top";
+					}
+				}
+					
+			//]]>
+			</script>
+			<input type="hidden" name="hiddenDependentFields" id="hiddenDependentFields" value="" />
+			<div hidden id="div_programas_2">
+				<select name="pregrado_quito" id="pregrado_quito" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="284">Agronegocios-Q</option>
+					<option value="296">Economía-Q</option>
+					<option value="2">Marketing-Q</option>
+					<option value="293">Medicina Veterinaria-Q</option>
+					<option value="303">Gestión de la inteligencia de Negocios-Q</option>
+					<option value="5">Negocios internacionales -Q</option>
+					<option value="16">Arquitectura-Q</option>
+					<option value="324">Diseño Gráfico-Q</option>
+					<option value="341">Enfermería-Q</option>
+					<option value="325">Fisioterapia-Q</option>
+					<option value="52">Medicina-Q</option>
+					<option value="53">Odontología-Q</option>
+					<option value="74">Psicología-Q</option>
+					<option value="13">Comunicación-Q</option>
+					<option value="18">Derecho-Q</option>
+					<option value="70">Relaciones Internacionales-Q</option>
+					<option value="24">Gastronomía-Q</option>
+					<option value="8">Ingeniería Automotriz-Q</option>
+					<option value="292">Ingeniería Civil-Q</option>
+					<option value="257">Ingeniería Industrial -Q</option>
+					<option value="64">Ingeniería Mecatrónica-Q</option>
+					<option value="233">Ingeniería de Riesgos de Desastres-Q</option>					
+				</select>
+				<select name="posgrado_quito" onchange="capturar_programa(event)" id="posgrado_quito" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="175">Maestría en Administración de Empresas (MBA)-Q</option>
+					<option value="193">Maestría en Mercadotecnia con mención en Gestión Digital-Q</option>
+					<option value="224">Maestría en Negocios Internacionales con mención en Gestión de la Internacionalización-Q</option>
+					<option value="236">Especialidad en Medicina Interna-Q</option>
+					<option value="244">Especialidad en Cirujía Traumatología y Ortopédica-Q</option>
+					<option value="237">Especialidad en Cirujía General -Q</option>
+					<option value="239">Especialidad en Pediatría -Q</option>
+					<option value="241">Especialidad en Ginecología y Obstetricia -Q</option>
+					<option value="243">Especialidad en Imagenología -Q</option>
+					<option value="267">Maestría en Gerencia en Salud-Q</option>
+					<option value="268">Maestría en Salud Pública-Q</option>
+					<option value="71">Maestría en Nutrición y Dietética con mención en Enfermedades Metabólicas, Obesidad y Diabetes-Q</option>
+					<option value="198">Especialidad en Seguridad y Salud Ocupacional con mención en Salud Ocupacional-Q</option>
+					<option value="277">Maestría en Derecho Procesal Penal y Litigación Oral-Q</option>
+					<option value="343">Maestría en Gastronomía con Mención en Gestión e Innovación-Q</option>					
+				</select>
+				<select name="pregrado_guayaquil" id="pregrado_guayaquil" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="108">Marketing-G</option>
+					<option value="107">Negocios internacionales -G</option>
+					<option value="111">Periodismo -G</option>
+					<option value="109">Publicidad-G</option>
+					<option value="95">Ingeniería Automotriz-G</option>
+					<option value="283">Derecho-G</option>
+					<option value="335">Psicología-G</option>				
+				</select>
+				<select name="posgrado_guayaquil" id="posgrado_guayaquil" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="271">Maestría en Adminitración de Empresas (MBA)-G</option>
+					<option value="337">Maestría en Gerencia en Salud-G</option>
+					<option value="338">Maestría en Salud Pública-G</option>
+					<option value="336">Maestría en Ingeniería Automotriz mención en Procesos y Calidad del Servicio Automotriz-G</option>					
+				</select>
+				<select name="pregrado_loja" id="pregrado_loja" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option><option value="291">Agronegocios-L</option>
+					<option value="87">Negocios Internacionales -L</option>
+					<option value="86">Marketing-L</option>
+					<option value="93">Arquitectura-L</option>
+					<option value="81">Derecho-L</option>
+					<option value="276">Tecnologias de la Informacion y la Comunicacion-L</option>
+					<option value="329">Psicologia-L</option>					
+				</select>
+				<select name="posgrado_loja" id="posgrado_loja" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="273">Maestría en Adminitración de Empresas (MBA)-L</option>
+					<option value="272">Maestría en Gestión Estratégica de cadenas de Suministro -L</option>					
+				</select>
+				<select name="pregrado_online" id="pregrado_online" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="100">Contabilidad y Auditoria-Contador Autorizado-O</option>
+					<option value="96">Negocios Internacionales-O</option>
+					<option value="97">Fiananzas-O</option>
+					<option value="98">Mercadotecnia-O</option>
+					<option value="327">Audiencias Digitales-O</option>
+					<option value="101">Comunicacion-O</option>
+					<option value="260">Derecho-O</option>
+					<option value="326">Educacion-O</option>
+					<option value="317">Ingenieria en Sistemas de Informacion-O</option>
+					<option value="315">Psicologia Organizacional-O</option>					
+				</select>
+				<select name="posgrado_online" id="posgrado_online" onchange="capturar_programa(event)" class="select select_Escoge_Programa">
+					<option value="">Escoge tu programa</option>
+					<option value="216">Maestría en Adminitración de Empresas (MBA)-O</option>
+					<option value="234">Maestría en Administración de Empresas con mención en Innovación-O</option>
+					<option value="278">Maestría en Gestión Deportiva-O</option>
+					<option value="345">Maestría en Finanzas Corporativas-O</option>
+					<option value="347">Maestría en Dirección Financiera con mención en mercados internacionales-O</option>
+					<option value="352">Maestría en Gestión Financiera y Tecnologías Disruptibas con Mención en Blockchain-O</option>
+					<option value="256">Maestría en Educación, mención en Gestión del Aprendizaje mediado por TIC-O</option>
+					<option value="344">Maestría en Derecho digital con mención en Innovación Legal y Nuevas Tecnologías-O</option>
+					<option value="353">Maestría en Relaciones Internacionales con Mención en Cooperación Internacional para el Desarrollo-O</option>
+					<option value="346">Maestría en Gamificación y Narrativa Transmedia-O</option>
+				</select>
+			</div>
+			<select id="esc_pgm" name="esc_pgm" class="select select_Escoge_Programa" hidden><option value="" id="opcion_programa"></option></select>
+		</form>
+		</div>
+			<!--<script type="text/javascript">(function(){ pardot.$(document).ready(function(){ (function() {
+				var $ = window.pardot.$;
+				window.pardot.FormDependencyMap = [{"primary_field_html_id":"455762_456338pi_455762_456338","secondary_field_html_id":"455762_456340pi_455762_456340","primary_field_value":"Pregrado Quito"},{"primary_field_html_id":"455762_456338pi_455762_456338","secondary_field_html_id":"455762_456342pi_455762_456342","primary_field_value":"Pregrado Guayaquil"},{"primary_field_html_id":"455762_456338pi_455762_456338","secondary_field_html_id":"455762_456344pi_455762_456344","primary_field_value":"Pregrado Loja"}];
+
+				$('.form-field-primary input, .form-field-primary select').each(function(index, input) {
+					$(input).on('change', window.piAjax.checkForDependentField);
+					window.piAjax.checkForDependentField.call(input);
+				});
+			})(); });})();</script>-->			
+			<script type="text/javascript" src="https://go.uide.edu.ec/js/piUtils.js?ver=2021-09-20"></script>
+		</body>
+	</html>
